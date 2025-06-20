@@ -11,12 +11,12 @@ interface LoginRequest {
   providedIn: 'root'
 })
 export class LoginService {
-  private loginUrl = 'http://flight-api-4urq.onrender.com/auth/login';  // Your backend URL
+  private loginUrl = 'https://flight-api-4urq.onrender.com/auth/login';  // Your backend URL
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<string> {
-  return this.http.post<string>('http://flight-api-4urq.onrender.com/auth/login', { username, password });
+  return this.http.post<string>('https://flight-api-4urq.onrender.com/auth/login', { username, password });
 }
 
 }

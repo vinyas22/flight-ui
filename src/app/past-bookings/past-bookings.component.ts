@@ -39,7 +39,7 @@ export class PastBookingsComponent implements OnInit {
       return;
     }
 
-    this.http.get<BookingDetails[]>(`http://flight-api-4urq.onrender.com/api/flights/past/${userId}`).subscribe(
+    this.http.get<BookingDetails[]>(`https://flight-api-4urq.onrender.com/api/flights/past/${userId}`).subscribe(
       data => this.bookings = data,
       err => {
         this.error = 'Failed to fetch bookings.';

@@ -34,7 +34,7 @@ export class RegisterComponent {
   this.successMessage = '';
 
   this.http.post<{ success: boolean, message: string }>(
-    'http://flight-api-4urq.onrender.com/auth/register',
+    'https://flight-api-4urq.onrender.com/auth/register',
     this.registerForm.value
   ).subscribe({
     next: (res) => {

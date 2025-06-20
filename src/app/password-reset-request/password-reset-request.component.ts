@@ -33,7 +33,7 @@ export class PasswordResetRequestComponent {
   const username = this.resetRequestForm.value.username;
 
   this.http.post<{ success: boolean, message: string }>(
-    'http://flight-api-4urq.onrender.com/auth/request-password-reset',
+    'https://flight-api-4urq.onrender.com/auth/request-password-reset',
     { username }
   ).subscribe({
     next: (res) => {

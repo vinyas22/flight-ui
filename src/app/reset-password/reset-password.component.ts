@@ -58,7 +58,7 @@ export class ResetPasswordComponent implements OnInit {
 
   const newPassword = this.resetForm.value.newPassword;
 
-  this.http.post<{ success: boolean, message: string }>('http://flight-api-4urq.onrender.com/auth/reset-password', {
+  this.http.post<{ success: boolean, message: string }>('https://flight-api-4urq.onrender.com/auth/reset-password', {
     token: this.token,
     newPassword
   }).subscribe({

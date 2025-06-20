@@ -57,9 +57,9 @@ clouds = Array.from({ length: 12 }, () => ({
   constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
-    this.http.get<string[]>('http://flight-api-4urq.onrender.com/api/flights/origins')
+    this.http.get<string[]>('https://flight-api-4urq.onrender.com/api/flights/origins')
       .subscribe(data => this.originSuggestions = data);
-    this.http.get<string[]>('http://flight-api-4urq.onrender.com/api/flights/destinations')
+    this.http.get<string[]>('https://flight-api-4urq.onrender.com/api/flights/destinations')
       .subscribe(data => this.destinationSuggestions = data);
           this.isShowButtons=localStorage.getItem('isLoggedIn') === 'true';
 this.test();
@@ -84,7 +84,7 @@ test() {
       date: this.date
     };
 
-    this.http.get<any[]>('http://flight-api-4urq.onrender.com/api/flights/search', { params }).subscribe(
+    this.http.get<any[]>('https://flight-api-4urq.onrender.com/api/flights/search', { params }).subscribe(
       (res: any[]) => {
         this.flights = res.map(flight => ({
           flightId: flight.id,

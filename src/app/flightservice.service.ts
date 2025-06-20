@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class FlightService {
-  private apiUrl = 'http://localhost:1011/api/flights/search'; // adjust if needed
+  private apiUrl = 'https://flight-api-4urq.onrender.com/api/flights/search'; // adjust if needed
 
   constructor(private http: HttpClient) {}
 
