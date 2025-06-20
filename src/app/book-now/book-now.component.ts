@@ -99,7 +99,7 @@ const modalElement = document.getElementById('loading');
     };
 
     this.http.post(
-  `http://localhost:1011/api/flights/payment/generate-otp`,
+  `http://flight-api-4urq.onrender.com/api/flights/payment/generate-otp`,
   { email: this.bookingDataForOtpConfirm.email },
   { responseType: 'text' } // 👈 This tells Angular to expect plain text
 ).subscribe({
@@ -134,7 +134,7 @@ if (this.currentModal) {
       bookingRequest: this.bookingDataForOtpConfirm
     };
 
-    this.http.post('http://localhost:1011/api/flights/payment/confirm', payload,{responseType: 'text'})
+    this.http.post('http://flight-api-4urq.onrender.com/api/flights/payment/confirm', payload,{responseType: 'text'})
       .subscribe({
         next: () => {
           const modalElement = document.getElementById('deleteModalforCommonId');
