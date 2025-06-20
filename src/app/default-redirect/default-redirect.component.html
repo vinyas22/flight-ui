@@ -1,0 +1,18 @@
+<nav class="ripple-navbar d-flex align-items-center justify-content-between px-4 py-2" [class.scrolled]="isScrolled">
+  <!-- Logo -->
+  <div class="ripple-logo clickable" (click)="onLogoClick()">
+    <span class="plane-emoji">✈️</span>
+    <span class="logo-text">SkyFly</span>
+  </div>
+
+  <!-- Buttons -->
+  <div *ngIf="isShowButtons" class="ripple-buttons d-flex gap-3">
+    <button class="ripple-btn" (click)="goToPastBookings()">Past Bookings</button>
+    <button class="ripple-btn btn-logout" (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<!-- Flying plane animation on takeoff -->
+<div *ngIf="showTakeoffPlane" class="takeoff-plane">🛫</div>
+
+<router-outlet></router-outlet>

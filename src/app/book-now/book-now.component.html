@@ -1,0 +1,111 @@
+
+<div class="flight-bg" style="margin-top: auto;">
+  <!-- Big Flying Plane -->
+  
+
+  <!-- Booking Card (centered and animated) -->
+  <div class="glass-card book-card flight-card-animate mx-auto  p-4" style="max-width: 600px; margin-top: 100px;">
+    <h3 class="text-center  mb-4" style="color: #333;">Book Your Flight</h3>
+    <div *ngIf="!otpSent">
+      <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
+        <label>Email:</label>
+        <input formControlName="email" type="email" placeholder="Enter email" class="form-control mb-2" />
+        <div *ngIf="bookingForm.get('email')?.touched && bookingForm.get('email')?.invalid" style="color:red;">
+          <div *ngIf="bookingForm.get('email')?.errors?.['required']">Email is required</div>
+          <div *ngIf="bookingForm.get('email')?.errors?.['email']">Invalid email format</div>
+        </div>
+
+        <div formArrayName="passengers">
+          <div *ngFor="let passenger of passengers.controls; let i = index" [formGroupName]="i" class="mb-3">
+            <label>Passenger {{ i + 1 }} Name:</label>
+            <input formControlName="fullName" placeholder="Full Name" class="form-control mb-1" />
+            <div *ngIf="passenger.get('fullName')?.touched && passenger.get('fullName')?.invalid" style="color:red;">
+              Full name is required
+            </div>
+
+            <label>Age:</label>
+            <input formControlName="age" type="number" placeholder="Age" class="form-control mb-1" />
+            <div *ngIf="passenger.get('age')?.touched && passenger.get('age')?.invalid" style="color:red;">
+              <div *ngIf="passenger.get('age')?.errors?.['required']">Age is required</div>
+              <div *ngIf="passenger.get('age')?.errors?.['min']">Age must be positive</div>
+            </div>
+
+            <label>Gender:</label>
+            <select formControlName="gender" class="form-control mb-1">
+              <option value="" disabled selected>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <div *ngIf="passenger.get('gender')?.touched && passenger.get('gender')?.invalid" style="color:red;">
+              Gender is required
+            </div>
+
+            <label>Passport Number:</label>
+            <input formControlName="passportNumber" placeholder="Passport Number" class="form-control mb-1" />
+            <div *ngIf="passenger.get('passportNumber')?.touched && passenger.get('passportNumber')?.invalid" style="color:red;">
+              Passport number is required
+            </div>
+
+            <label>Seat Number:</label>
+            <input formControlName="seatNumber" placeholder="Seat Number" class="form-control mb-1" />
+            <div *ngIf="passenger.get('seatNumber')?.touched && passenger.get('seatNumber')?.invalid" style="color:red;">
+              Seat number is required
+            </div>
+
+            <button type="button" class="btn btn-outline-primary btn-sm me-2" (click)="addPassenger()">+ Add Passenger</button>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="removePassenger(i)" *ngIf="passengers.length > 1">Remove</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success book-btn-animate mt-3">Send OTP</button>
+      </form>
+    </div>
+
+    <div *ngIf="otpSent">
+      <form [formGroup]="otpForm">
+        <label>Enter OTP:</label>
+        <input formControlName="otp" maxlength="6" class="form-control mb-2" />
+        <div *ngIf="otpForm.get('otp')?.touched && otpForm.get('otp')?.invalid" style="color:red;">
+          <div *ngIf="otpForm.get('otp')?.errors?.['required']">OTP is required</div>
+          <div *ngIf="otpForm.get('otp')?.errors?.['minlength'] || otpForm.get('otp')?.errors?.['maxlength']">
+            OTP must be 6 digits
+          </div>
+        </div>
+        <button class="btn btn-primary mt-2" (click)="confirmPayment()">Confirm Payment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal fade" id="deleteModalforCommonId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment is successful</h5>
+        </div>
+        <div class="modal-body">
+          Please check your mail for booking details.
+        </div>
+        <div class="modal-footer">
+          <button (click)="showmodal=false" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Loading Modal -->
+  <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Please wait while we send you email</h5>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/Loading_icon.gif" alt="" height="50px">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

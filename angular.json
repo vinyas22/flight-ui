@@ -23,8 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+]
+,
             "scripts": []
           },
           "configurations": {
@@ -92,10 +94,17 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+           "scripts": [
+  "node_modules/three/build/three.min.js",
+  "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"
+]
+
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2847255a-ecf8-4295-b026-6f5fa9e4cf23"
   }
 }

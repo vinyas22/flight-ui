@@ -1,0 +1,54 @@
+<div class="bookings-glass-card mt-5 p-4">
+  <h2 class="mb-4 text-center title-dark">Your Past Bookings</h2>
+
+  <!-- Error display -->
+  <div *ngIf="error" class="text-center text-danger">{{ error }}</div>
+
+  <!-- No bookings fallback -->
+  <div *ngIf="!bookings?.length && !error" class="text-center text-muted">
+    <span style="font-size: 2rem;">🛫</span>
+    <p>No past bookings found.</p>
+  </div>
+
+  <!-- Scrollable Booking Cards -->
+  <div *ngIf="bookings?.length" class="booking-scroll-wrapper">
+    <div class="booking-grid">
+      <div *ngFor="let booking of bookings" class="booking-tile fade-in">
+
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <div>
+            <div class="passenger-name">{{ booking.passengerName }}</div>
+            <div class="flight-id">Flight #{{ booking.flightId }}</div>
+          </div>
+          <div class="booking-date text-muted">
+            {{ booking.bookingDate | date: 'mediumDate' }}
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="booking-row">
+          <span class="label">From:</span>
+          <span>{{ booking.origin }}</span>
+        </div>
+        <div class="booking-row">
+          <span class="label">To:</span>
+          <span>{{ booking.destination }}</span>
+        </div>
+        <div class="booking-row">
+          <span class="label">Departure:</span>
+          <span>{{ booking.departureTime | date: 'medium' }}</span>
+        </div>
+        <div class="booking-row">
+          <span class="label">Arrival:</span>
+          <span>{{ booking.arrivalTime | date: 'medium' }}</span>
+        </div>
+        <div class="booking-row">
+          <span class="label">Seat:</span>
+          <span>{{ booking.seatNumber || 'NA' }}</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

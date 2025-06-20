@@ -1,0 +1,85 @@
+* {
+  font-family: 'Emirates-Bold', 'Jost', sans-serif;
+}
+
+.register-container {
+  margin: 100px auto 2rem auto;
+  padding: 2rem;
+  max-width: 400px;
+
+  /* 🌫️ Glassmorphism */
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #333;
+}
+
+input::placeholder {
+  color: #666;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4fc3f7;
+  box-shadow: 0 0 4px #4fc3f7;
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+}
+
+button {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  transform: scale(1.02);
+}
+
+button:disabled {
+  background-color: #6ba3f7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: -0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #d9534f;
+}
+
+.success-message {
+  margin-top: 1rem;
+  color: #28a745;
+}

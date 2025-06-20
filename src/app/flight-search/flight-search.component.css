@@ -1,0 +1,158 @@
+* {
+  font-family: 'Emirates-Bold', 'Jost', sans-serif;
+}
+
+/* 🧊 Glass Card Style */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  border-radius: 1.25rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transition: 0.3s ease;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ✈️ Search card spacing below navbar */
+.search-card {
+  margin-top: 100px;
+}
+
+/* 🟨 Flight Card Animation */
+.flight-card-animate {
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔤 Section Title */
+.available-flights-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #000 !important;
+  margin: 2rem auto 1rem auto;
+  text-align: center;
+}
+
+/* 📍 Timeline Layout */
+.flight-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.timeline {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.timeline .line {
+  height: 2px;
+  width: 40px;
+  background: #ccc;
+}
+
+.timeline .line.end {
+  width: 40px;
+}
+
+.plane-icon {
+  font-size: 1.2rem;
+  color: orange;
+}
+
+.duration {
+  margin: 0 0.5rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #eee;
+}
+
+/* 💺 Seats & Price */
+.book-btn-animate {
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-btn-animate:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  color: #fff;
+}
+
+h5 {
+  color: #000 !important;
+}
+
+.text-warning {
+  color: #000 !important;
+}
+
+/* 🌞 Sun (optional) */
+.sun {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 4rem;
+  color: #fffde7;
+  opacity: 0.95;
+  z-index: 1;
+  animation: sun-glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes sun-glow {
+  0% { filter: drop-shadow(0 0 30px #fff59d); opacity: 0.9; }
+  100% { filter: drop-shadow(0 0 60px #fffde7); opacity: 1; }
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+  .flight-timeline {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .glass-card {
+    padding: 1rem;
+  }
+
+  .book-btn-animate {
+    margin-top: 0.5rem;
+  }
+}
+.flight-results-scroll {
+  max-height: 70vh; /* or adjust as needed */
+  overflow-y: auto;
+  padding-right: 8px; /* prevent content from hiding behind scrollbar */
+  margin-top: 1rem;
+}
+
+/* Optional: custom scrollbar style */
+.flight-results-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.flight-results-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}

@@ -1,0 +1,154 @@
+* {
+  font-family: 'Jost';
+}
+
+/* ☁️ Floating clouds */
+
+/* 🌞 Sun icon */
+.sun {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 4rem;
+  color: #fffde7;
+  opacity: 0.95;
+  z-index: 1;
+  filter: drop-shadow(0 0 40px #fff59d) drop-shadow(0 0 80px #fffde7);
+  animation: sun-glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes sun-glow {
+  0% { filter: drop-shadow(0 0 30px #fff59d) drop-shadow(0 0 60px #fffde7); opacity: 0.9;}
+  100% { filter: drop-shadow(0 0 60px #fffde7) drop-shadow(0 0 120px #fffde7); opacity: 1;}
+}
+
+.sun::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 7rem; height: 7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,224,0.25) 40%, rgba(255,255,224,0) 80%);
+  z-index: -1;
+  animation: sun-rays 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sun-rays {
+  0% { transform: translate(-50%, -50%) scale(1);}
+  100% { transform: translate(-50%, -50%) scale(1.15);}
+}
+
+/* 🧊 Matte Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.30); /* More visible matte */
+  backdrop-filter: blur(24px); /* Stronger frost effect */
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.10), 0 1px 4px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 10;
+  position: relative;
+  color: white;
+  transition: box-shadow 0.3s, border 0.3s;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.18), 0 2px 8px rgba(0,0,0,0.10);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+  animation: shine 1.2s linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-60%) skewX(-20deg);}
+  100% { transform: translateX(80%) skewX(-20deg);}
+}
+
+/* ✈️ Card entrance animation */
+.flight-card-animate {
+  animation: fadeInUp 0.8s;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* 🟦 Book button animation */
+.book-btn-animate, .btn-primary {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.09);
+  animation: pulse 2.2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(76,175,255,0.18);}
+  70% { box-shadow: 0 0 0 10px rgba(76,175,255,0);}
+  100% { box-shadow: 0 0 0 0 rgba(76,175,255,0);}
+}
+
+.book-btn-animate:hover, .btn-primary:hover {
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  transform: scale(1.08);
+  color: #fff;
+}
+
+/* 🛫 Takeoff plane animation */
+.takeoff-plane {
+  position: fixed;
+  left: 2vw;
+  bottom: 2vh;
+  z-index: 100;
+  font-size: 3.5rem;
+  animation: takeoff 2.7s cubic-bezier(.4,1.2,.7,1) forwards;
+  pointer-events: none;
+}
+
+@keyframes takeoff {
+  0% {
+    left: 2vw;
+    bottom: 2vh;
+    opacity: 1;
+    transform: scale(1) rotate(18deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.15) rotate(18deg);
+  }
+  100% {
+    left: 90vw;
+    bottom: 80vh;
+    opacity: 0;
+    transform: scale(1.3) rotate(18deg);
+  }
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 768px) {
+  .glass-card {
+    margin-top: 2rem !important;
+    padding: 1.5rem !important;
+    max-width: 95vw !important;
+  }
+}

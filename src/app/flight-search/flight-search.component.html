@@ -1,0 +1,84 @@
+<div class="flight-bg">
+  <!-- 🌞 Sun (optional) -->
+  <div class="sun">☀️</div>
+
+  <div class="container flight-content-wrapper">
+    <!-- 🔍 Flight Search Card -->
+    <div class="glass-card search-card p-4 mb-4">
+      <h3 class="text-center mb-4" style="color: #333; font-family: Emirates-Bold, sans-serif;">Flight Search</h3>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <input list="origins" [(ngModel)]="origin" name="origin" class="form-control" placeholder="From">
+          <datalist id="origins">
+            <option *ngFor="let city of originSuggestions" [value]="city"></option>
+          </datalist>
+        </div>
+        <div class="col-md-4">
+          <input list="destinations" [(ngModel)]="destination" name="destination" class="form-control" placeholder="To">
+          <datalist id="destinations">
+            <option *ngFor="let city of destinationSuggestions" [value]="city"></option>
+          </datalist>
+        </div>
+        <div class="col-md-3">
+          <input [(ngModel)]="date" name="date" type="date" class="form-control">
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary w-100" (click)="searchFlights()">Go</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✈️ Flight Results -->
+<div class="flight-results-scroll">
+
+    <div *ngIf="flights.length > 0">
+  <h4 class="available-flights-title text-dark">Available Flights</h4>
+
+  <div *ngFor="let flight of flights" class="glass-card flight-card-animate mb-4 p-4">
+    <!-- ✈️ Airline Name -->
+    <div class="text-center mb-3">
+      <h5 class="mb-1" style="font-family: Emirates-Bold, sans-serif; color: #000;">
+        {{ flight.airline }}
+      </h5>
+    </div>
+
+    <!-- 🛫 Timeline -->
+    <div class="flight-timeline d-flex align-items-center justify-content-center w-100 gap-4 mb-3">
+      <!-- Departure -->
+      <div class="text-center">
+        <div class="fw-bold fs-5">{{ flight.departureTime | date: 'shortTime' }}</div>
+        <div class="small text-muted">{{ flight.origin }}</div>
+      </div>
+
+      <!-- Timeline Line -->
+      <div class="timeline d-flex align-items-center">
+        <div class="line"></div>
+        <div class="plane-icon px-2 text-orange">✈️</div>
+        <div class="duration text-muted small">{{ calculateDuration(flight.departureTime, flight.arrivalTime) }}</div>
+        <div class="line end"></div>
+      </div>
+
+      <!-- Arrival -->
+      <div class="text-center">
+        <div class="fw-bold fs-5">{{ flight.arrivalTime | date: 'shortTime' }}</div>
+        <div class="small text-muted">{{ flight.destination }}</div>
+      </div>
+    </div>
+
+    <!-- 💺 Seats and Price -->
+    <div class="d-flex justify-content-between w-100 mt-2 flex-wrap">
+      <div class="text-light small">
+        💺 <strong>Seats:</strong> {{ flight.availableSeats }}
+      </div>
+      <div class="fw-bold fs-5" style="color: #000;">
+        ₹{{ flight.price }}
+        <button class="btn btn-success btn-sm ms-3 book-btn-animate" (click)="bookFlight(flight)">
+          Book
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+     </div>
+  </div>
+</div>

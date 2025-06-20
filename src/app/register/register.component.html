@@ -1,0 +1,37 @@
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- Username -->
+    <div>
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" placeholder="Enter your username" />
+      <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched" class="error">
+        Username is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter your email" />
+      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="error">
+        Enter a valid email.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div>
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" placeholder="Enter your password" />
+      <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="error">
+        Password is required and must be at least 6 characters.
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+
+    <!-- Optional Feedback -->
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </form>
+</div>
